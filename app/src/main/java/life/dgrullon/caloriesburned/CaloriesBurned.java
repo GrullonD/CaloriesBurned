@@ -88,6 +88,7 @@ public class CaloriesBurned extends AppCompatActivity {
         metsList.add(new METSValues("8.0", "Jogging in Place"));
         metsList.add(new METSValues("10.0", "Jump Rope"));
         metsList.add(new METSValues("5.8", "Sexual Activity"));
+        
     }
 
     private void setSwitchOnClickListener() {
