@@ -63,6 +63,7 @@ public class CaloriesBurned extends AppCompatActivity {
 
         findViews();
         setSwitchOnClickListener();
+        setRadioButtonClickListeners();
         setSpinnerAdapterAndOptions();
         setDefaultInputs();
         setTimeTextChangeListener();
@@ -111,6 +112,7 @@ public class CaloriesBurned extends AppCompatActivity {
         });
     }
     private void switchToMETS() {
+        mGenderLayout.setVisibility(View.GONE);
         mAgeLayout.setVisibility(View.GONE);
         mHeartRateLayout.setVisibility(View.GONE);
 
@@ -121,10 +123,35 @@ public class CaloriesBurned extends AppCompatActivity {
     private void switchToCALC() {
         mMETSLayout.setVisibility(View.GONE);
 
+        mGenderLayout.setVisibility(View.VISIBLE);
         mAgeLayout.setVisibility(View.VISIBLE);
         mHeartRateLayout.setVisibility(View.VISIBLE);
         mTimeLayout.setVisibility(View.VISIBLE);
         mWeightLayout.setVisibility(View.VISIBLE);
+    }
+
+    private void setRadioButtonClickListeners() {
+
+        mMen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mMen.isChecked()){
+                    mMen.setChecked(true);
+                    mWomen.setChecked(false);
+                }
+            }
+        });
+
+        mWomen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mWomen.isChecked()){
+                    mWomen.setChecked(true);
+                    mMen.setChecked(false);
+                }
+            }
+        });
+
     }
 
     private void setSpinnerAdapterAndOptions() {
