@@ -1,5 +1,6 @@
 package life.dgrullon.caloriesburned;
 
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -23,6 +26,9 @@ public class CaloriesBurned extends AppCompatActivity {
 
     Switch  mSwitch;
 
+    RadioButton mMen;
+    RadioButton mWomen;
+
     EditText mAge;
     EditText mWeight;
     EditText mHeartRate;
@@ -30,6 +36,7 @@ public class CaloriesBurned extends AppCompatActivity {
 
     Spinner mMETS;
 
+    LinearLayout mGenderLayout;
     FrameLayout mAgeLayout;
     FrameLayout mWeightLayout;
     FrameLayout mHeartRateLayout;
@@ -63,32 +70,26 @@ public class CaloriesBurned extends AppCompatActivity {
 
     }
 
-    private void setSpinnerAdapterAndOptions() {
-        setSpinnerData();
+    private void findViews() {
+        mCalculationDisplay = findViewById(R.id.caloriesBurnedNumber);
 
-        //fill data in spinner
-        ArrayAdapter<METSValues> adapter = new ArrayAdapter<>(CaloriesBurned.this, R.layout.spinner_toplevel_view, metsList);
-        adapter.setDropDownViewResource(R.layout.spinner_dropdown_view);
-        mMETS.setAdapter(adapter);
+        mSwitch = findViewById(R.id.switchIcon);
+        mMen = findViewById(R.id.menButton);
+        mWomen = findViewById(R.id.womenButton);
+        mAge = findViewById(R.id.age);
+        mWeight = findViewById(R.id.weight);
+        mHeartRate = findViewById(R.id.heartRate);
+        mTime = findViewById(R.id.time);
+        mMETS = findViewById(R.id.METs);
 
-    }
-    private void setSpinnerData() {
-        metsList.add(new METSValues("0.9", "Sleeping"));
-        metsList.add(new METSValues("1.0", "Watching Television"));
-        metsList.add(new METSValues("1.5", "Desk Work"));
-        metsList.add(new METSValues("2.3", "Walking (1.7 mph)"));
-        metsList.add(new METSValues("2.9", "Walking (2.5 mph)"));
-        metsList.add(new METSValues("3.3", "Walking (3.0 mph)"));
-        metsList.add(new METSValues("3.6", "Walking (3.4 mph)"));
-        metsList.add(new METSValues("3.0", "Stationary Bicycle (50 watts)"));
-        metsList.add(new METSValues("5.5", "Stationary Bicycle (100 watts)"));
-        metsList.add(new METSValues("4.0", "Outdoor Bicycle (<10 mph)"));
-        metsList.add(new METSValues("3.5", "Calisthenics (Light)"));
-        metsList.add(new METSValues("8.0", "Calisthenics (Heavy)"));
-        metsList.add(new METSValues("8.0", "Jogging in Place"));
-        metsList.add(new METSValues("10.0", "Jump Rope"));
-        metsList.add(new METSValues("5.8", "Sexual Activity"));
-        
+        mSubmit = findViewById(R.id.calculateButton);
+
+        mGenderLayout = findViewById(R.id.genderLayout);
+        mAgeLayout = findViewById(R.id.ageLayout);
+        mWeightLayout = findViewById(R.id.weightLayout);
+        mHeartRateLayout = findViewById(R.id.heartRateLayout);
+        mTimeLayout = findViewById(R.id.timeLayout);
+        mMETSLayout = findViewById(R.id.METSLayout);
     }
 
     private void setSwitchOnClickListener() {
@@ -126,21 +127,32 @@ public class CaloriesBurned extends AppCompatActivity {
         mWeightLayout.setVisibility(View.VISIBLE);
     }
 
-    private void findViews() {
-        mCalculationDisplay = findViewById(R.id.caloriesBurnedNumber);
-        mMETS = findViewById(R.id.METs);
-        mSwitch = findViewById(R.id.switchIcon);
-        mAge = findViewById(R.id.age);
-        mWeight = findViewById(R.id.weight);
-        mHeartRate = findViewById(R.id.heartRate);
-        mTime = findViewById(R.id.time);
-        mSubmit = findViewById(R.id.calculateButton);
+    private void setSpinnerAdapterAndOptions() {
+        setSpinnerData();
 
-        mAgeLayout = findViewById(R.id.ageLayout);
-        mWeightLayout = findViewById(R.id.weightLayout);
-        mHeartRateLayout = findViewById(R.id.heartRateLayout);
-        mTimeLayout = findViewById(R.id.timeLayout);
-        mMETSLayout = findViewById(R.id.METSLayout);
+        //fill data in spinner
+        ArrayAdapter<METSValues> adapter = new ArrayAdapter<>(CaloriesBurned.this, R.layout.spinner_toplevel_view, metsList);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_view);
+        mMETS.setAdapter(adapter);
+
+    }
+    private void setSpinnerData() {
+        metsList.add(new METSValues("0.9", "Sleeping"));
+        metsList.add(new METSValues("1.0", "Watching Television"));
+        metsList.add(new METSValues("1.5", "Desk Work"));
+        metsList.add(new METSValues("2.3", "Walking (1.7 mph)"));
+        metsList.add(new METSValues("2.9", "Walking (2.5 mph)"));
+        metsList.add(new METSValues("3.3", "Walking (3.0 mph)"));
+        metsList.add(new METSValues("3.6", "Walking (3.4 mph)"));
+        metsList.add(new METSValues("3.0", "Stationary Bicycle (50 watts)"));
+        metsList.add(new METSValues("5.5", "Stationary Bicycle (100 watts)"));
+        metsList.add(new METSValues("4.0", "Outdoor Bicycle (<10 mph)"));
+        metsList.add(new METSValues("3.5", "Calisthenics (Light)"));
+        metsList.add(new METSValues("8.0", "Calisthenics (Heavy)"));
+        metsList.add(new METSValues("8.0", "Jogging in Place"));
+        metsList.add(new METSValues("10.0", "Jump Rope"));
+        metsList.add(new METSValues("5.8", "Sexual Activity"));
+
     }
 
     private void setButtonClickListener() {
@@ -164,7 +176,12 @@ public class CaloriesBurned extends AppCompatActivity {
                         mTimeDouble = minutes + seconds / 60;
                     } else mTimeDouble = 0;
 
-                    mCalculationDouble = mensCaloriesBurned(mAgeInt, mWeightDouble, mHeartRateInt, mTimeDouble);
+                    if(mMen.isChecked()){
+                        mCalculationDouble = mensCaloriesBurned(mAgeInt, mWeightDouble, mHeartRateInt, mTimeDouble);
+                    }
+                    else {
+                        mCalculationDouble = womensCaloriesBurned(mAgeInt, mWeightDouble, mHeartRateInt, mTimeDouble);
+                    }
                 }
                 else {
                     if (Double.parseDouble(((METSValues) mMETS.getSelectedItem()).getMetsValue()) >= 0) {
@@ -189,6 +206,9 @@ public class CaloriesBurned extends AppCompatActivity {
     }
     private double mensCaloriesBurned (int age, double weight, int heartRate, double time) {
         return round(((0.2017*age + 0.1988*weight + 0.6309*heartRate - 55.0969)*time) / 4.184,2);
+    }
+    private double womensCaloriesBurned (int age, double weight, int heartRate, double time) {
+        return round(((0.0740*age + 0.1263*weight + 0.4472*heartRate - 20.4022)*time) / 4.184,2);
     }
     private double metsCaloriesBurned (double metsValue, double weight, double time) {
         return round(metsValue*weight*time,2);
@@ -264,6 +284,7 @@ public class CaloriesBurned extends AppCompatActivity {
         String tempTime =   Integer.toString(tempTimeMinutes) + "m " +
                             Integer.toString(tempTimeSeconds) + "s";
 
+        mMen.setChecked(true);
         mAge.setText(String.format(Locale.getDefault(),"%d",tempAge),TextView.BufferType.EDITABLE);
         mWeight.setText(String.format(Locale.getDefault(),"%.2f",tempWeight),TextView.BufferType.EDITABLE);
         mHeartRate.setText(String.format(Locale.getDefault(),"%d",tempHeartRate),TextView.BufferType.EDITABLE);
