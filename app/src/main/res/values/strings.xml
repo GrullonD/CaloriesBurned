@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Calories Burned</string>
+    <string name="Age">Age (years)</string>
+        <string name="AgeHint">enter age</string>
+    <string name="Weight">Weight (lbs)</string>
+        <string name="WeightHint">enter weight</string>
+    <string name="HeartRate">Heart Rate (bpm)</string>
+        <string name="HeartRateHint">enter heart rate</string>
+    <string name="Time">Time (mm:ss)</string>
+        <string name="TimeHint">enter time</string>
+    <string name="MET">MET</string>
+    <string name="Calculate">Calculate</string>
+    <string name="Reset">Reset</string>
+    <string name="CaloriesBurnedText">Calories Burned: </string>
+        <string name="CaloriesBurnedNumber">000</string>
+
+    <string name="CALC">CALC</string>
+    <string name="METS">METS</string>
+</resources>
