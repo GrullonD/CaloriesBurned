@@ -7,4 +7,10 @@
     <color name="caloriesBurnedBackground">#ff4043</color>
     <color name="caloriesBurnedEditTextBackground">#982527</color>
     <color name="caloriesBurnedSpinnerBackground">#6c1b1d</color>
+    <color name="mainMenuBackground">#4046ff</color>
+    <color name="mainMenuEditTextBackground">#252d98</color>
+    <color name="mainMenuSpinnerBackground">#1b1e6c</color>
+    <color name="presetUserBackground">#79ff40</color>
+    <color name="presetUserEditTextBackground">#25982d</color>
+    <color name="presetUserSpinnerBackground">#1b6c20</color>
 </resources>

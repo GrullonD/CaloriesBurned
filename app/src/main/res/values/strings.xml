@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">Calories Burned</string>
 
+    <string name="addPreset">Add a new preset user</string>
+    <string name="deletePreset">Delete a preset user</string>
+    <string name="quickEntry">Quickly find out how many calories you burned!</string>
+
+
     <string name="CaloriesBurnedText">Calories Burned: </string>
     <string name="CaloriesBurnedNumber">000</string>
+
+    <string name="Name">Name</string>
+    <string name="NameHint">enter name</string>
 
     <string name="CALC">CALC</string>
     <string name="METS">METS</string>
@@ -11,18 +19,19 @@
     <string name="Woman">Woman</string>
 
     <string name="Age">Age (years)</string>
-        <string name="AgeHint">enter age</string>
+    <string name="AgeHint">enter age</string>
 
     <string name="Weight">Weight (lbs)</string>
-        <string name="WeightHint">enter weight</string>
+    <string name="WeightHint">enter weight</string>
 
     <string name="HeartRate">Heart Rate (bpm)</string>
-        <string name="HeartRateHint">enter heart rate</string>
+    <string name="HeartRateHint">enter heart rate</string>
 
     <string name="Time">Time (mm:ss)</string>
-        <string name="TimeHint">enter time</string>
+    <string name="TimeHint">enter time</string>
 
     <string name="Calculate">Calculate</string>
     <string name="Reset">Reset</string>
+    <string name="Save">Save</string>
 
 </resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/presetUserBackground"
+    android:visibility="visible"
+    tools:context=".enterPreset">
+
+    <LinearLayout
+        android:id="@+id/entries"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/presetUserEditTextBackground"
+                android:ems="10"
+                android:gravity="end"
+                android:hint="@string/NameHint"
+                android:inputType="text"
+                android:labelFor="@+id/editText"
+                android:maxLength="3"
+                android:padding="8dp"
+                android:textColor="@color/fontDarkBackground"
+                android:textColorHint="@color/fontDarkBackground" />
+
+            <TextView
+                android:id="@+id/nameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp"
+                android:text="@string/Name" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/ageLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp">
+
+            <EditText
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/presetUserEditTextBackground"
+                android:ems="10"
+                android:gravity="end"
+                android:hint="@string/AgeHint"
+                android:inputType="number"
+                android:labelFor="@+id/editText"
+                android:maxLength="2"
+                android:padding="8dp"
+                android:textColor="@color/fontDarkBackground"
+                android:textColorHint="@color/fontDarkBackground" />
+
+            <TextView
+                android:id="@+id/ageLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp"
+                android:text="@string/Age" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/weightLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp">
+
+            <EditText
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/presetUserEditTextBackground"
+                android:ems="10"
+                android:gravity="end"
+                android:hint="@string/WeightHint"
+                android:inputType="numberDecimal"
+                android:labelFor="@+id/editText"
+                android:maxLength="6"
+                android:padding="8dp"
+                android:textColor="@color/fontDarkBackground"
+                android:textColorHint="@color/fontDarkBackground" />
+
+            <TextView
+                android:id="@+id/weightLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="8dp"
+                android:text="@string/Weight" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/Save" />
+    </LinearLayout>
+
+</FrameLayout>

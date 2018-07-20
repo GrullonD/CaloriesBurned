@@ -1,6 +1,6 @@
 package life.dgrullon.caloriesburned;
 
-import android.provider.MediaStore;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -60,6 +61,11 @@ public class CaloriesBurned extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calories_burned);
+
+        Bundle intent = getIntent().getExtras();
+        if(intent!=null){
+            int testValue = intent.getInt("MAINMENU"); //if it's a string you stored.
+        }
 
         findViews();
         setSwitchOnClickListener();
