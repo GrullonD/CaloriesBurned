@@ -3,22 +3,22 @@ package life.dgrullon.caloriesburned;
 public class presetUser {
     private int _id;
     private String _name;
-    private int _age;
-    private int _weight;
+    private String _age;
+    private String _weight;
 
     public presetUser(){
         this._id = 0;
         this._name = "";
-        this._age = 0;
-        this._weight = 0;
+        this._age = "";
+        this._weight = "";
     }
 
     // Constructor insert title
     public presetUser(String name) {
         this._id = 0;
         this._name = name;
-        this._age = 0;
-        this._weight = 0;
+        this._age = "";
+        this._weight = "";
     }
 
     public int get_id() {
@@ -37,19 +37,19 @@ public class presetUser {
         this._name = _name;
     }
 
-    public int get_age() {
+    public String get_age() {
         return _age;
     }
 
-    public void set_age(int _age) {
+    public void set_age(String _age) {
         this._age = _age;
     }
 
-    public int get_weight() {
+    public String get_weight() {
         return _weight;
     }
 
-    public void set_weight(int _weight) {
+    public void set_weight(String _weight) {
         this._weight = _weight;
     }
 }
