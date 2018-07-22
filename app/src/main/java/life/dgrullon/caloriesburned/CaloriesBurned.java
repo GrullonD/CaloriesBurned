@@ -16,7 +16,6 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -57,14 +56,18 @@ public class CaloriesBurned extends AppCompatActivity {
 
     boolean isCalc = true;
 
+    User mUser;
+    boolean mAddedUser = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calories_burned);
 
-        Bundle intent = getIntent().getExtras();
+        Intent intent = getIntent();
         if(intent!=null){
-            int testValue = intent.getInt("MAINMENU"); //if it's a string you stored.
+            mUser = (User) intent.getSerializableExtra("MAINMENU");
+            if(!mUser.getName().equals("QuickAdd")) mAddedUser = true;
         }
 
         findViews();
@@ -308,20 +311,31 @@ public class CaloriesBurned extends AppCompatActivity {
     }
 
     private void setDefaultInputs(){
-
+        mMen.setChecked(true);
+        mWomen.setChecked(false);
         int tempAge = 28;
         double tempWeight = 176.42;
         int tempHeartRate = 135;
         int tempTimeMinutes = 15;
         int tempTimeSeconds = 30;
-        String tempTime =   Integer.toString(tempTimeMinutes) + "m " +
-                            Integer.toString(tempTimeSeconds) + "s";
+        String tempTime = Integer.toString(tempTimeMinutes) + "m " +
+                Integer.toString(tempTimeSeconds) + "s";
 
-        mMen.setChecked(true);
-        mAge.setText(String.format(Locale.getDefault(),"%d",tempAge),TextView.BufferType.EDITABLE);
-        mWeight.setText(String.format(Locale.getDefault(),"%.2f",tempWeight),TextView.BufferType.EDITABLE);
-        mHeartRate.setText(String.format(Locale.getDefault(),"%d",tempHeartRate),TextView.BufferType.EDITABLE);
-        mTime.setText(tempTime,TextView.BufferType.EDITABLE);
-
+        if(mAddedUser) {
+            if(mUser.getGender().equals("Man")) {
+                mMen.setChecked(true);
+                mWomen.setChecked(false);
+            }
+            else {
+                mMen.setChecked(false);
+                mWomen.setChecked(true);
+            }
+            tempAge = Integer.parseInt(mUser.getAge());
+            tempWeight = Double.parseDouble(mUser.getWeight());
+        }
+        mAge.setText(String.format(Locale.getDefault(), "%d", tempAge), TextView.BufferType.EDITABLE);
+        mWeight.setText(String.format(Locale.getDefault(), "%.2f", tempWeight), TextView.BufferType.EDITABLE);
+        mHeartRate.setText(String.format(Locale.getDefault(), "%d", tempHeartRate), TextView.BufferType.EDITABLE);
+        mTime.setText(tempTime, TextView.BufferType.EDITABLE);
     }
 }

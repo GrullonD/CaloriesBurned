@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/presetUserBackground"
     android:visibility="visible"
-    tools:context=".enterPreset">
+    tools:context=".EnterUser">
 
     <LinearLayout
         android:id="@+id/entries"
@@ -13,6 +13,31 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/genderLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/menButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:checked="true"
+                android:text="@string/Man" />
+
+            <RadioButton
+                android:id="@+id/womenButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/Woman" />
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/nameLayout"
@@ -31,7 +56,7 @@
                 android:hint="@string/NameHint"
                 android:inputType="text"
                 android:labelFor="@+id/editText"
-                android:maxLength="3"
+                android:maxLength="12"
                 android:padding="8dp"
                 android:textColor="@color/fontDarkBackground"
                 android:textColorHint="@color/fontDarkBackground" />
